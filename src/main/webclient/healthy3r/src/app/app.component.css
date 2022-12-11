@@ -1,0 +1,23 @@
+a {
+	text-decoration: none;
+	padding: 5px;
+	color: black;
+	font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	
+}
+
+h2{
+	font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-align: center;
+	background-color:darkblue;
+	color: white;
+	padding: 10px;
+	
+}
+
+container {
+	display: flex;
+	justify-items: center;
+	align-items: center;
+	justify-content: center;
+}

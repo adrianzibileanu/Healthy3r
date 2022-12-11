@@ -1,0 +1,73 @@
+<div *ngIf="patient">
+<div *ngIf="editEnabled;else elseBlock">
+  <h2>{{patient.firstName}}{{patient.lastName | uppercase}} Details</h2>
+  <div>id: {{patient.id}} </div>
+  <div>
+   	<label for="patient-firstName">First name:</label>
+    <input id = "patient-firstName" [(ngModel)]="patient.firstName" placeholder="first name">
+    <label for="patient-lastName">Last name:</label>
+    <input id = "patient-lastName" [(ngModel)]="patient.lastName" placeholder="last name">
+    <label for="patient-email">Email:</label>
+    <input id = "patient-email" [(ngModel)]="patient.email" placeholder="email">
+    <label for="patient-age">Age:</label>
+    <input id = "patient-age" [(ngModel)]="patient.age" placeholder="age">
+    <label for="patient-birthDate">Birth date:</label>
+    <input id = "patient-birthDate" [(ngModel)]="patient.birthDate" placeholder="birth date">
+    <label for="patient-sex">Sex:</label>
+    <input id = "patient-sex" [(ngModel)]="patient.sex" placeholder="sex">
+    <label for="patient-bloodType">Blood type:</label>
+    <input id = "patient-bloodType" [(ngModel)]="patient.bloodType" placeholder="blood type">
+    <label for="patient-weight">Weight:</label>
+    <input id = "patient-weight" [(ngModel)]="patient.weight" placeholder="weight">
+    <label for="patient-weightUnit">Unit:</label>
+    <input id = "patient-weightUnit" [(ngModel)]="patient.weightUnit" placeholder="unit"> 
+    <label for="patient-height">Height:</label>
+    <input id = "patient-height" [(ngModel)]="patient.height" placeholder="height">      
+    <label for="patient-heightUnit">Unit:</label>
+    <input id = "patient-heightUnit" [(ngModel)]="patient.heightUnit" placeholder="unit">  
+    <button type="button" (click)="enableEditing()">Cancel</button>     
+    <button type="button" (click)="save()">Save</button>   
+   </div>
+   </div>
+   <ng-template #elseBlock>
+   	<div>
+    <label>First Name:</label>
+    <label>{{patient.firstName}}</label>
+    </div>
+    <div>
+    <label>Last Name:</label>
+    <label>{{patient.lastName}}</label>
+    </div>
+    <div>
+    <label>Email:</label>
+    <label>{{patient.email}}</label>
+    </div>
+    <div>
+    <label>Age:</label>
+    <label>{{patient.age}}</label>
+    </div>
+    <div>
+    <label>Birth Date:</label>
+    <label>{{patient.birthDate}}</label>
+    </div>
+    <div>
+    <label>Sex:</label>
+    <label>{{patient.sex}}</label>
+    </div>
+    <div>
+    <label>Blood Type:</label>
+    <label>{{patient.bloodType}}</label>
+    </div>
+    <div>
+    <label>Weight: </label>
+    <label>{{patient.weight}}{{patient.weightUnit}}</label>
+    </div>
+    <div>
+    <label>Height:</label>
+    <label>{{patient.height}}{{patient.heightUnit}}</label>
+    </div>
+    <button type="button" (click)="enableEditing()">Edit</button>
+   </ng-template>
+
+  <button type="button" (click)="goBack()"> Go Back</button>
+</div>

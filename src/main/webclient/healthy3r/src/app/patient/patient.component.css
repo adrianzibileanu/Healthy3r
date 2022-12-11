@@ -1,0 +1,74 @@
+container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	
+}
+
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{text-align: center; background-color:black; color: white; border-color: rgba(0,0,0,0.3);border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:darkblue;border-style:solid;border-width:1px; font-family:Arial, sans-serif;font-size:16px;
+  font-weight:normal;overflow:hidden;padding:10px 15px;word-break:normal;}
+.tg .tg-0lax{text-align:center;vertical-align:top}
+
+a, button {
+
+  background-color: lightblue;
+  text-decoration: none;
+  border-radius: 8px;
+  border-width: 0;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 10px 12px;
+  text-align: center;
+  transition: all 200ms;
+  vertical-align: baseline;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+
+  }
+  
+  a:hover{
+  
+  background-color: blue;
+  
+  }
+  
+  btn-delete{
+   background-color: lightblue;
+  text-decoration: none;
+  border-radius: 8px;
+  border-width: 0;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 10px 12px;
+  text-align: center;
+  transition: all 200ms;
+  vertical-align: baseline;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  }
+  
+  btn-delete:hover{
+  background-color: red;
+  }

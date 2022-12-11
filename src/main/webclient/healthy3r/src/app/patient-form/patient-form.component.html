@@ -1,0 +1,69 @@
+<div class="d-flex justify-content-center align-items-center container">
+	<div class = "card py-5 px-3">
+		<div>
+			<label for="new-patient"> First Name: </label>
+			<input id="new-patient" #patientFirstName>
+		</div>
+		<div>
+			<label for="new-patient"> Last Name: </label>
+			<input id="new-patient" #patientLastName>
+		</div>
+		<div>
+			<label for="new-patient"> Email: </label>
+			<input id="new-patient" #patientEmail>
+		</div>
+		<div>
+			<label for="new-patient"> Age: </label>
+			<input id="new-patient" #patientAge>
+		</div>
+		<div>
+			<label for="new-patient"> Birth Date: </label>
+			<input id="new-patient" #patientBirthDate>
+		</div>
+		<div>
+			<label for="new-patient"> Sex: </label>
+			<input id="new-patient" #patientSex>
+		</div>
+		<div>
+			<label for="new-patient"> BloodType</label>
+			<input id="new-patient" #patientBloodType>
+		</div>
+		<div>
+			<label for="new-patient"> Weight: </label>
+			<input id="new-patient" #patientWeight>
+			<label for="new-patient"> Unit: </label>
+			<input id="new-patient" #patientWeightUnit>
+		</div>
+		<div>
+			<label for="new-patient"> Height: </label>
+			<input id="new-patient" #patientHeight>
+			<label for="new-patient"> Unit: </label>
+			<input id="new-patient" #patientHeightUnit>
+		</div>
+<button type="button" class="add-button" (click)="add(
+patientFirstName.value, 
+patientLastName.value, 
+patientEmail.value,
+patientAge.value,
+patientBirthDate.value,
+patientSex.value,
+patientBloodType.value,
+patientWeight.value,
+patientWeightUnit.value,
+patientHeight.value,
+patientHeightUnit.value);
+
+patientFirstName.value = '';
+patientLastName.value = '';
+patientEmail.value = '';
+patientAge.value = '';
+patientBirthDate.value = '';
+patientSex.value = '';
+patientBloodType.value = '';
+patientWeight.value = '';
+patientWeightUnit.value = '';
+patientHeight.value = '';
+patientHeightUnit.value = '' ">
+Add Patient</button>
+	</div>
+</div>
