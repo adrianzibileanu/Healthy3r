@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +11,8 @@ import { HomeComponent } from './home/home.component';
 import { MessagesComponent } from './messages/messages.component';
 import { PatientFormComponent } from './patient-form/patient-form.component';
 
+import { UnitFilterPipe } from './unit-filter.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,13 +20,15 @@ import { PatientFormComponent } from './patient-form/patient-form.component';
     PatientDetailComponent,
     HomeComponent,
     MessagesComponent,
-    PatientFormComponent
+    PatientFormComponent,
+    UnitFilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   
   ],
   providers: [],

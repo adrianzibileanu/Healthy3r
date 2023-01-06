@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Location } from  '@angular/common';
+
 import { Patient } from '../patient';
+import { iPatient } from '../patient';
 import { PatientService } from '../patient.service';
 
 @Component({
@@ -11,11 +14,12 @@ import { PatientService } from '../patient.service';
 export class PatientComponent implements OnInit {
 	
 	patients: Patient[] = [];
+	delPatient?: iPatient;
 	idIndex?: number;
 	
 
 
-  constructor(private patientService: PatientService) { }
+  constructor(private patientService: PatientService, private location: Location) { }
 
   ngOnInit(): void {
 	  this.listPatients();
@@ -25,9 +29,9 @@ export class PatientComponent implements OnInit {
 	  this.patientService.getPatients().subscribe(patients => this.patients = patients);
   }
   
-  delete(patient: Patient): void{
-	    this.patients = this.patients.filter(p => p !== patient);
-	    this.patientService.deletePatient(patient.id).subscribe();
+  delete(id: string): void{	
+	    this.patientService.deletePatient(id).subscribe(() => window.location.reload());
   }
+  
 
 }

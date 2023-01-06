@@ -1,5 +1,5 @@
-<div>
 <div class="container">
+<div >
 <table class="tg">
 <thead>
   <tr>
@@ -9,9 +9,9 @@
     <th class="tg-0pky">Email</th>
     <th class="tg-0pky">Age</th>
     <th class="tg-0pky">BloodType</th>
-    <th class="tg-0lax"></th>
-    <th class="tg-0lax"></th>
-    <th class="tg-0lax"><a routerLink="/new-patient">Add Patient</a></th>
+    <th class="tg-1lax"></th>
+    <th class="tg-1lax"></th>
+    <th class="tg-1lax"><a class="aBtn" routerLink="/new-patient">Add Patient</a></th>
   </tr>
 </thead>
 <tbody>
@@ -19,12 +19,12 @@
     <td class="tg-0pky">{{ i }}</td>
     <td class="tg-0pky">{{ patient.firstName }}</td>
     <td class="tg-0pky">{{ patient.lastName }}</td>
-    <td class="tg-0pky">{{ patient.email }}</td>
+    <td class="tg-0pky"><a href="mailto:{{ patient.email }}">{{ patient.email }}</a></td>
     <td class="tg-0pky">{{ patient.age }}</td>
     <td class="tg-0pky">{{ patient.bloodType }}</td>
-    <td class="tg-0lax"><a routerLink="/patients/{{patient.id}}">View</a></td>
-    <td class="tg-0lax"><a routerLink="/patients/{{patient.id}}">Edit</a></td>
-    <td class="btn-delete"><button (click)="delete(patient)">Delete</button></td>
+    <td class="tg-0lax"><a class="aBtn" routerLink="/patients/{{patient.id}}">View</a></td>
+    <td class="tg-0lax"><a class="aBtn" routerLink="/patients/{{patient.id}}">Edit</a></td>
+    <td class="tg-0lax"><button class="btn-delete" (click)="delete(patient.id)">Delete</button></td>
   </tr>
 </tbody>
 </table>

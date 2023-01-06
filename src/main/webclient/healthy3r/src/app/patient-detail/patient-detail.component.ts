@@ -1,9 +1,17 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { HttpResponse } from '@angular/common/http';
 import { Location } from '@angular/common';
 
-import { PatientService } from  '../patient.service';
 import { Patient } from '../patient';
+import { iPatient } from '../patient';
+import { PatientService } from  '../patient.service';
+import { UNITS } from '../constants/unit-constants';
+import { SEX } from '../constants/sex-constants';
+import { BLOODTYPE } from '../constants/bloodtype-constants';
+import { Unit } from '../unit';
 
 
 @Component({
@@ -15,11 +23,34 @@ export class PatientDetailComponent implements OnInit {
 	
 	@Input() patient?: Patient;
 	editEnabled?: boolean;
+	  units = UNITS;
+	  sexes = SEX;
+	  bloodTypes = BLOODTYPE;
+	  weightFilter = {type: 'weight'};
+	  heightFilter = {type: 'height'};
+	  sexFilter = {type: 'sex'};
+	  bloodTypeFilter = {type: 'bloodtype'};
+	  
+	  editForm = this.fb.group({
+		    id: [],
+		    firstName: [null, [Validators.required]],
+		    lastName: [null, [Validators.required]],
+		    email: [null, [Validators.required]],
+		    age: [null, [Validators.required]],
+		    birthDate: [null, [Validators.required]],
+		    sex: [null, [Validators.required]],
+		    bloodType: [null, [Validators.required]],
+		    weight: [null, [Validators.required]],
+		    weightUnit: [null, [Validators.required]],
+		    height: [null, [Validators.required]],
+		    heightUnit: [null, [Validators.required]],
+		  });
 
   constructor(
 		  private patientService: PatientService,
 		  private route: ActivatedRoute,
-		  private location: Location) { }
+		  private location: Location,
+		  private fb: FormBuilder) { }
 
   ngOnInit(): void {
 	  this.getPatient();

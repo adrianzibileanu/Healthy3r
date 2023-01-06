@@ -1,11 +1,11 @@
 .card {
-  width: 350px;
-  padding: 10px;
+  width: 100%;
   border-radius: 20px;
-  background: #fff;
+  background: lightblue;
   border: none;
   height: 350px;
   position: relative;
+  border-color:black;
 }
 
 .container {
@@ -22,7 +22,11 @@ body {
 }
 
 .form-control {
-  margin-right: 12px;
+  margin: 12px;
+  position: relative;
+  display: inline-flex;
+  justify-content: flex-start;
+  width: 45%;
 }
 
 .form-control:focus {
@@ -33,6 +37,36 @@ body {
   box-shadow: none;
 }
 
+
 .cursor {
   cursor: pointer;
+}
+
+.text-danger{
+	color: red;
+}
+
+button{
+  background-color: blue;
+  text-decoration: none;
+  border-radius: 8px;
+  border-width: 0;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  margin: 10px;
+  padding: 10px 12px;
+  text-align: center;
+  transition: all 200ms;
+  vertical-align: baseline;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  float: right;
 }

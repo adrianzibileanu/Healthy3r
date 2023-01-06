@@ -1,69 +1,83 @@
-<div class="d-flex justify-content-center align-items-center container">
-	<div class = "card py-5 px-3">
-		<div>
-			<label for="new-patient"> First Name: </label>
-			<input id="new-patient" #patientFirstName>
+<div class="container">
+	<form class="card" name ="createForm" role="form" novalidate (ngSubmit)="add()" [formGroup]="createForm">
+		<div class="form-control">
+			<label for="firstName"> First Name</label>
+			<input type="text" id="firstName" required name="firstName"  formControlName="firstName">
+		  <div *ngIf="createForm.get('firstName')!.invalid && (createForm.get('firstName')!.dirty || createForm.get('firstName')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="createForm.get('firstName')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>	        
 		</div>
-		<div>
-			<label for="new-patient"> Last Name: </label>
-			<input id="new-patient" #patientLastName>
+		<div class="form-control" >
+			<label for="lastName"> Last Name</label>
+			<input type="text" id="lastName" required name="lastName"  formControlName="lastName">
+			        
 		</div>
-		<div>
-			<label for="new-patient"> Email: </label>
-			<input id="new-patient" #patientEmail>
+		<div class="form-control">
+			<label for="email"> Email</label>
+			<input type="text" id="email" required name="email"  formControlName="email">
+				  <div *ngIf="createForm.get('email')!.invalid && (createForm.get('email')!.dirty || createForm.get('email')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="createForm.get('email')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>	  	        
 		</div>
-		<div>
-			<label for="new-patient"> Age: </label>
-			<input id="new-patient" #patientAge>
+		<div class="form-control">
+			<label for="age"> Age</label>
+			<input type="text" id="age" required name="age"  formControlName="age">
+			        
 		</div>
-		<div>
-			<label for="new-patient"> Birth Date: </label>
-			<input id="new-patient" #patientBirthDate>
+		<div class="form-control" >
+			<label for="birthDate"> Birth Date</label>
+			<input type="text" id="birthDate" required name="birthDate" formControlName="birthDate">
+			        
 		</div>
-		<div>
-			<label for="new-patient"> Sex: </label>
-			<input id="new-patient" #patientSex>
+		<div class="form-control">
+			<label for="sex"> Sex</label>
+			<select class="form-control" id="sex" name="sex" formControlName="sex">
+                 <option *ngIf="!createForm.get('weightUnit')!.value" [ngValue]="null" selected></option>
+                 <option value="{{sex.value}}" *ngFor="let sex of sexes | unitFilter:sexFilter ">{{sex.value}}</option>
+            </select>
 		</div>
-		<div>
-			<label for="new-patient"> BloodType</label>
-			<input id="new-patient" #patientBloodType>
+		<div class="form-control">
+			<label for="bloodType"> Blood Type</label>
+ 			<select class="form-control" id="bloodType" name="bloodType" formControlName="bloodType">
+                 <option *ngIf="!createForm.get('bloodType')!.value" [ngValue]="null" selected></option>
+                 <option value="{{bloodType.value}}" *ngFor="let bloodType of bloodTypes | unitFilter:bloodTypeFilter">{{bloodType.value}}</option>
+            </select>
+			        
 		</div>
-		<div>
-			<label for="new-patient"> Weight: </label>
-			<input id="new-patient" #patientWeight>
-			<label for="new-patient"> Unit: </label>
-			<input id="new-patient" #patientWeightUnit>
+		<div class="form-control">
+			<label for="weight"> Weight</label>
+			<input type="text" id="weight" required name="weight" formControlName="weight">
+			        
+			<label for="weightUnit"> Unit</label>
+			<select class="form-control" id="weightUnit" name="weightUnit" formControlName="weightUnit">
+                 <option *ngIf="!createForm.get('weightUnit')!.value" [ngValue]="null" selected></option>
+                 <option value="{{unit.value}}" *ngFor="let unit of units | unitFilter:weightFilter ">{{unit.value}}</option>
+            </select>
 		</div>
-		<div>
-			<label for="new-patient"> Height: </label>
-			<input id="new-patient" #patientHeight>
-			<label for="new-patient"> Unit: </label>
-			<input id="new-patient" #patientHeightUnit>
+		<div class="form-control">
+			<label for="height"> Height</label>
+			<input type="text" id="height" required name="height" formControlName="height">
+			       
+			<label for="heightUnit"> Unit</label>
+			<select class="form-control" id="heightUnit" name="heightUnit" formControlName="heightUnit">
+                 <option *ngIf="!createForm.get('heightUnit')!.value" [ngValue]="null" selected></option>
+                 <option value="{{unit.value}}" *ngFor="let unit of units | unitFilter:heightFilter ">{{unit.value}}</option>
+            </select>
 		</div>
-<button type="button" class="add-button" (click)="add(
-patientFirstName.value, 
-patientLastName.value, 
-patientEmail.value,
-patientAge.value,
-patientBirthDate.value,
-patientSex.value,
-patientBloodType.value,
-patientWeight.value,
-patientWeightUnit.value,
-patientHeight.value,
-patientHeightUnit.value);
 
-patientFirstName.value = '';
-patientLastName.value = '';
-patientEmail.value = '';
-patientAge.value = '';
-patientBirthDate.value = '';
-patientSex.value = '';
-patientBloodType.value = '';
-patientWeight.value = '';
-patientWeightUnit.value = '';
-patientHeight.value = '';
-patientHeightUnit.value = '' ">
-Add Patient</button>
-	</div>
+		
+		<button type="submit" [disabled]="!createForm.valid">Add Patient</button>
+			
+			<!-- select >
+				<option *ngFor="let unit of units | unitFilter:heightFilter " value="{{unit.value}}">{{unit.value}}</option>
+			</select-->	
+			
+	
+	</form>
 </div>

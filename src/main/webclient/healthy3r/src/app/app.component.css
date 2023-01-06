@@ -1,9 +1,13 @@
 a {
 	text-decoration: none;
 	padding: 5px;
-	color: black;
+	color: white;
 	font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	
+}
+
+a:hover{
+	color:lightblue;
 }
 
 h2{
@@ -13,11 +17,13 @@ h2{
 	color: white;
 	padding: 10px;
 	
+	
 }
 
-container {
+.container {
 	display: flex;
 	justify-items: center;
 	align-items: center;
 	justify-content: center;
+	background-color: darkblue;
 }
