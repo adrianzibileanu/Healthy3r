@@ -20,7 +20,7 @@ import { Unit } from '../unit';
   styleUrls: ['./patient-detail.component.css']
 })
 export class PatientDetailComponent implements OnInit {
-	
+
 	@Input() patient?: Patient;
 	editEnabled?: boolean;
 	  units = UNITS;
@@ -30,7 +30,7 @@ export class PatientDetailComponent implements OnInit {
 	  heightFilter = {type: 'height'};
 	  sexFilter = {type: 'sex'};
 	  bloodTypeFilter = {type: 'bloodtype'};
-	  
+
 	  editForm = this.fb.group({
 		    id: [],
 		    firstName: [null, [Validators.required]],
@@ -53,6 +53,7 @@ export class PatientDetailComponent implements OnInit {
 		  private fb: FormBuilder) { }
 
   ngOnInit(): void {
+
 	  this.getPatient();
   }
 
@@ -60,20 +61,40 @@ export class PatientDetailComponent implements OnInit {
 	    const id = String(this.route.snapshot.paramMap.get('id'));
 	    this.patientService.getPatient(id).subscribe(patient => this.patient = patient);
   }
-  
+
   goBack(): void{
 	    this.location.back();
   }
-  
+
   save(): void{
-	    if (this.patient){
-	      this.patientService.updatePatient(this.patient).subscribe();// => this.goBack());
+    const patient = this.editFromForm();
+	    if (patient){
+	      this.patientService.updatePatient(patient).subscribe();// => this.goBack());
 	      if(this.editEnabled){
 	    	  this.editEnabled = false;
 	      }
 	    }
   }
-  
+
+  private editFromForm(): iPatient {
+    return {
+      ...new Patient(),
+      id: this.patient?.id,
+      firstName: this.editForm.get(['firstName'])!.value,
+      lastName: this.editForm.get(['lastName'])!.value,
+      email: this.editForm.get(['email'])!.value,
+      age: this.editForm.get(['age'])!.value,
+      birthDate: this.editForm.get(['birthDate'])!.value,
+      sex: this.editForm.get(['sex'])!.value,
+      bloodType: this.editForm.get(['bloodType'])!.value,
+      height: this.editForm.get(['height'])!.value,
+      heightUnit: this.editForm.get(['heightUnit'])!.value,
+      weight: this.editForm.get(['weight'])!.value,
+      weightUnit: this.editForm.get(['weightUnit'])!.value
+    };
+  }
+
+
   enableEditing(): void{
 	  if (this.editEnabled){
 		  this.editEnabled = false;
@@ -81,5 +102,5 @@ export class PatientDetailComponent implements OnInit {
 		  this.editEnabled = true;
 	  }
   }
-  
+
 }

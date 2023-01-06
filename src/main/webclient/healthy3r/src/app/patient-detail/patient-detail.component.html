@@ -1,35 +1,98 @@
-<div *ngIf="patient">
-<div *ngIf="editEnabled;else elseBlock">
-  <h2>{{patient.firstName}}{{patient.lastName | uppercase}} Details</h2>
-  <div>id: {{patient.id}} </div>
+<div class="card" *ngIf="patient">
+  <div class="title">
+  <h2>{{patient.firstName}} {{patient.lastName | uppercase}} Details</h2>
+  </div>
+  <p class="title">id: {{patient.id}} </p>
+<div class="container card" *ngIf="editEnabled;else elseBlock">
+<div class="card-body">
   <div>
-   	<label for="patient-firstName">First name:</label>
-    <input id = "patient-firstName" [(ngModel)]="patient.firstName" placeholder="first name">
-    <label for="patient-lastName">Last name:</label>
-    <input id = "patient-lastName" [(ngModel)]="patient.lastName" placeholder="last name">
-    <label for="patient-email">Email:</label>
-    <input id = "patient-email" [(ngModel)]="patient.email" placeholder="email">
-    <label for="patient-age">Age:</label>
-    <input id = "patient-age" [(ngModel)]="patient.age" placeholder="age">
-    <label for="patient-birthDate">Birth date:</label>
-    <input id = "patient-birthDate" [(ngModel)]="patient.birthDate" placeholder="birth date">
-    <label for="patient-sex">Sex:</label>
-    <input id = "patient-sex" [(ngModel)]="patient.sex" placeholder="sex">
-    <label for="patient-bloodType">Blood type:</label>
-    <input id = "patient-bloodType" [(ngModel)]="patient.bloodType" placeholder="blood type">
-    <label for="patient-weight">Weight:</label>
-    <input id = "patient-weight" [(ngModel)]="patient.weight" placeholder="weight">
-    <label for="patient-weightUnit">Unit:</label>
-    <input id = "patient-weightUnit" [(ngModel)]="patient.weightUnit" placeholder="unit"> 
-    <label for="patient-height">Height:</label>
-    <input id = "patient-height" [(ngModel)]="patient.height" placeholder="height">      
-    <label for="patient-heightUnit">Unit:</label>
-    <input id = "patient-heightUnit" [(ngModel)]="patient.heightUnit" placeholder="unit">  
-    <button type="button" (click)="enableEditing()">Cancel</button>     
-    <button type="button" (click)="save()">Save</button>   
-   </div>
+    <form class="card" name ="createForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <div class="form-control">
+        <label for="firstName"> First Name</label>
+        <input type="text" id="firstName" [(ngModel)]="patient.firstName" required name="firstName"  formControlName="firstName">
+        <div *ngIf="editForm.get('firstName')!.invalid && (editForm.get('firstName')!.dirty || editForm.get('firstName')!.touched)">
+          <small class="form-text text-danger"
+                 *ngIf="editForm.get('firstName')?.errors?.required">
+            This field is required.
+          </small>
+        </div>
+      </div>
+      <div class="form-control" >
+        <label for="lastName"> Last Name</label>
+        <input type="text" id="lastName" [(ngModel)]="patient.lastName" required name="lastName"  formControlName="lastName">
+
+      </div>
+      <div class="form-control">
+        <label for="email"> Email</label>
+        <input type="text" id="email" [(ngModel)]="patient.email" required name="email"  formControlName="email">
+        <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)">
+          <small class="form-text text-danger"
+                 *ngIf="editForm.get('email')?.errors?.required">
+            This field is required.
+          </small>
+        </div>
+      </div>
+      <div class="form-control">
+        <label for="age"> Age</label>
+        <input type="text" id="age" [(ngModel)]="patient.age" required name="age"  formControlName="age">
+
+      </div>
+      <div class="form-control" >
+        <label for="birthDate"> Birth Date</label>
+        <input type="text" id="birthDate" [(ngModel)]="patient.birthDate" required name="birthDate" formControlName="birthDate">
+
+      </div>
+      <div class="form-control">
+        <label for="sex"> Sex</label>
+        <select class="form-control" id="sex" [(ngModel)]="patient.sex" name="sex" formControlName="sex">
+          <option *ngIf="!editForm.get('sex')!.value" [ngValue]="null" selected></option>
+          <option value="{{sex.value}}" *ngFor="let sex of sexes | unitFilter:sexFilter ">{{sex.value}}</option>
+        </select>
+      </div>
+      <div class="form-control">
+        <label for="bloodType"> Blood Type</label>
+        <select class="form-control" id="bloodType" [(ngModel)]="patient.bloodType" name="bloodType" formControlName="bloodType">
+          <option *ngIf="!editForm.get('bloodType')!.value" [ngValue]="null" selected></option>
+          <option value="{{bloodType.value}}" *ngFor="let bloodType of bloodTypes | unitFilter:bloodTypeFilter">{{bloodType.value}}</option>
+        </select>
+
+      </div>
+      <div class="form-control">
+        <label for="weight"> Weight</label>
+        <input type="text" id="weight" [(ngModel)]="patient.weight" required name="weight" formControlName="weight">
+
+        <label for="weightUnit"> Unit</label>
+        <select class="form-control" id="weightUnit" [(ngModel)]="patient.weightUnit" name="weightUnit" formControlName="weightUnit">
+          <option *ngIf="!editForm.get('weightUnit')!.value" [ngValue]="null" selected></option>
+          <option value="{{unit.value}}" *ngFor="let unit of units | unitFilter:weightFilter ">{{unit.value}}</option>
+        </select>
+      </div>
+      <div class="form-control">
+        <label for="height"> Height</label>
+        <input type="text" id="height" [(ngModel)]="patient.height" required name="height" formControlName="height">
+
+        <label for="heightUnit"> Unit</label>
+        <select class="form-control" id="heightUnit" [(ngModel)]="patient.heightUnit" name="heightUnit" formControlName="heightUnit">
+          <option *ngIf="!editForm.get('heightUnit')!.value" [ngValue]="null" selected></option>
+          <option value="{{unit.value}}" *ngFor="let unit of units | unitFilter:heightFilter ">{{unit.value}}</option>
+        </select>
+      </div>
+
+
+      <button type="submit" [disabled]="!editForm.valid">Save Patient</button>
+
+      <!-- select >
+        <option *ngFor="let unit of units | unitFilter:heightFilter " value="{{unit.value}}">{{unit.value}}</option>
+      </select-->
+
+
+    </form>
+  </div>
+  </div>
    </div>
    <ng-template #elseBlock>
+     <div class="container">
+       <div class="view">
    	<div>
     <label>First Name:</label>
     <label>{{patient.firstName}}</label>
@@ -66,7 +129,10 @@
     <label>Height:</label>
     <label>{{patient.height}}{{patient.heightUnit}}</label>
     </div>
+     </div>
+     </div>
     <button type="button" (click)="enableEditing()">Edit</button>
+
    </ng-template>
 
   <button type="button" (click)="goBack()"> Go Back</button>

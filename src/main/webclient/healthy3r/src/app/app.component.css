@@ -3,7 +3,7 @@ a {
 	padding: 5px;
 	color: white;
 	font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	
+
 }
 
 a:hover{
@@ -16,14 +16,23 @@ h2{
 	background-color:darkblue;
 	color: white;
 	padding: 10px;
-	
-	
 }
 
 .container {
-	display: flex;
-	justify-items: center;
-	align-items: center;
-	justify-content: center;
-	background-color: darkblue;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". .";
+  background-color: darkblue;
+}
+
+.container .logo{
+  justify-self: start;
+}
+
+.container .nav{
+  justify-self: end;
+  align-items: center;
 }

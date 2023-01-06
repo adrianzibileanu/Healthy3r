@@ -1,0 +1,96 @@
+.container {
+  margin: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.view {
+ margin: 10px;
+  display: flow;
+
+}
+
+.aBtn {
+
+  background-color: blue;
+  text-decoration: none;
+  border-radius: 8px;
+  border-width: 0;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 10px 12px;
+  text-align: center;
+  transition: all 200ms;
+  vertical-align: baseline;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+
+}
+
+button.btn-delete {
+
+  background-color: red;
+  text-decoration: none;
+  border-radius: 8px;
+  border-width: 0;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 10px 12px;
+  text-align: center;
+  transition: all 200ms;
+  vertical-align: baseline;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+
+}
+
+.aBtn:hover{
+
+  background-color: darkblue;
+
+}
+
+a:hover{
+  color: blue;
+}
+
+
+.btn-delete:hover{
+  background-color:darkred;
+}
+
+button{
+  float: right;
+}
+
+.title {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
